@@ -22,19 +22,59 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, #1e3a4c, #2c5364, #3e4a5a, #1f2e35);
+  background: linear-gradient(-45deg, #00C4CC, #F6A5C0, #C1B2EA, #A5DEF1);
   background-size: 400% 400%;
-  animation: gradientShift 12s ease infinite;
-
-  color: #ffffff;
+  animation: gradientShift 15s ease infinite;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 2;
+}
+
+#introContent {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 40px 30px;
   text-align: center;
-  transition: opacity 0.5s ease;
-  padding: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #333;
+  max-width: 600px;
+  z-index: 3;
+}
+
+#introContent img {
+  width: 160px;
+  margin-bottom: 24px;
+  animation: bounceIn 1.2s ease;
+}
+
+#introContent h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#introContent p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+#startBtn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #00C4CC;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+#startBtn:hover {
+  background-color: #00a9b2;
 }
 
 @keyframes gradientShift {
@@ -49,55 +89,6 @@
   }
 }
 
-
-#intro img {
-  width: 180px;
-  margin-bottom: 24px;
-  animation: bounceIn 1s ease;
-}
-
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-
-    #intro h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    #intro p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    #startBtn {
-      padding: 12px 24px;
-      font-size: 1rem;
-      background-color: #00C4CC;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    #startBtn:hover {
-      background-color: #00a9b2;
-    }
 
     #canvaFrame {
       width: 100vw;
@@ -115,23 +106,27 @@
 <body>
 
   <!-- Intro Splash -->
-<div id="intro">
-  <img src="Canva%20Education%20Stacked%20On%20Dark_id-ID.svg" alt="Canva for Education Logo">
-  
-  <h3>Selamat Datang di</h3><br><h1>Workshop Canva Power Class</h1>
-  
-  <p style="max-width: 600px;">
-    Kegiatan ini diselenggarakan dalam rangka<br><h2><strong>Pekan Raya Canva 2025</strong></h2><br>  
-    bersama para pendidik hebat di SD Negeri 2 Palapi, Kecamatan Muara Uya, Kabupaten Tabalong, Kalimantan Selatan.
-  </p>
-  
-  <p style="font-style: italic; color: #00C4CC; margin-top: 1rem;">
-    <strong>“Empowering the world to design”</strong>strong>
-  </p>
-  
-  <button id="startBtn">Mulai</button>
-</div>
 
+  <div id="intro">
+  <canvas id="particles"></canvas>
+
+  <div id="introContent">
+    <img src="Canva%20Education%20Stacked%20On%20Dark_id-ID.svg" alt="Canva for Education Logo">
+   <br>
+  <h2>Selamat Datang di</h2><br><h1>Workshop Canva Power Class</h1>
+
+    <p>
+      Kegiatan ini diselenggarakan dalam rangka <strong>Pekan Raya Canva 2025</strong>,  
+      bersama para pendidik hebat di <strong>SD Negeri 2 Palapi, Kecamatan Muara Uya, Kabupaten Tabalong</strong>.
+    </p>
+
+    <p style="font-style: italic; color: #007C88;">
+      “Empowering the world to design”
+    </p>
+
+    <button id="startBtn">Mulai</button>
+  </div>
+</div>
 
 
   <!-- Canva Frame -->
@@ -153,6 +148,76 @@
       }, 500); // waktu sesuai transition
     });
   </script>
+  <script>
+  // Partikel confetti halus
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+
+  let particlesArray = [];
+  const colors = ["#00C4CC", "#F6A5C0", "#C1B2EA", "#FFE6A7"];
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 4 + 1;
+      this.speedY = Math.random() * 1 + 0.5;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    update() {
+      this.y += this.speedY;
+      if (this.y > canvas.height) {
+        this.y = 0;
+        this.x = Math.random() * canvas.width;
+      }
+    }
+
+    draw() {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < 100; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+
+  initParticles();
+  animateParticles();
+
+  // Tombol mulai
+  document.getElementById('startBtn').addEventListener('click', function () {
+    document.getElementById('intro').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('canvaFrame').style.display = 'block';
+    }, 500);
+  });
+</script>
+
 
 </body>
 </html>
