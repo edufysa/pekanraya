@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Embed Canva</title>
+  <title>Canva Fullscreen</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow: hidden;
+      background-color: #000; /* opsional: buat latar hitam untuk estetika */
     }
+
     iframe {
-      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
       height: 100vh;
       border: none;
     }
   </style>
 </head>
 <body>
-  <iframe src="https://bj3sgxwhdnqbhmkk.canva-hosted-embed.com/codelet/AAEAEGJqM3NneHdoZG5xYmhta2sAAAAAAZiAJzaNsR0orFj5thGwc1KLQxU5WC7tjCpXr8P8OhecFbEsXNE/#" allowfullscreen></iframe>
+  <iframe 
+    src="https://bj3sgxwhdnqbhmkk.canva-hosted-embed.com/codelet/AAEAEGJqM3NneHdoZG5xYmhta2sAAAAAAZiAJzaNsR0orFj5thGwc1KLQxU5WC7tjCpXr8P8OhecFbEsXNE/#" 
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
 </body>
 </html>
