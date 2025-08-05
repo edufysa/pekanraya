@@ -1,33 +1,111 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Canva Power Class - Pekan Raya Canva</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background-color: #000; /* opsional: buat latar hitam untuk estetika */
+      box-sizing: border-box;
     }
 
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #e9f8f8;
+    }
+
+    #intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #e9f8f8;
+      color: #004d4d;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      text-align: center;
+      transition: opacity 0.5s ease;
+      padding: 20px;
+    }
+
+    #intro img {
+      width: 160px;
+      margin-bottom: 24px;
+    }
+
+    #intro h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #intro p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #startBtn {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #00C4CC;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #startBtn:hover {
+      background-color: #00a9b2;
+    }
+
+    #canvaFrame {
       width: 100vw;
       height: 100vh;
       border: none;
+      display: none;
+    }
+
+    #canvaContainer {
+      width: 100vw;
+      height: 100vh;
     }
   </style>
 </head>
 <body>
-  <iframe 
-    src="https://bj3sgxwhdnqbhmkk.canva-hosted-embed.com/codelet/AAEAEGJqM3NneHdoZG5xYmhta2sAAAAAAZiAJzaNsR0orFj5thGwc1KLQxU5WC7tjCpXr8P8OhecFbEsXNE/#" 
-    allowfullscreen
-    loading="lazy"
-  ></iframe>
+
+  <!-- Intro Splash -->
+  <div id="intro">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Canva_Logo_for_Education.svg/512px-Canva_Logo_for_Education.svg.png" alt="Canva for Education Logo">
+    <h1>Selamat Datang di Halaman Canva</h1>
+    <p>Ini adalah halaman interaktif berbasis <strong>Canva Code</strong>. Klik untuk memulai!</p>
+    <button id="startBtn">Mulai</button>
+  </div>
+
+  <!-- Canva Frame -->
+  <div id="canvaContainer">
+    <iframe 
+      id="canvaFrame"
+      src="https://bj3sgxwhdnqbhmkk.canva-hosted-embed.com/codelet/AAEAEGJqM3NneHdoZG5xYmhta2sAAAAAAZiAJzaNsR0orFj5thGwc1KLQxU5WC7tjCpXr8P8OhecFbEsXNE/#" 
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <script>
+    document.getElementById('startBtn').addEventListener('click', function () {
+      document.getElementById('intro').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('intro').style.display = 'none';
+        document.getElementById('canvaFrame').style.display = 'block';
+      }, 500); // waktu sesuai transition
+    });
+  </script>
+
 </body>
 </html>
