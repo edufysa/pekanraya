@@ -18,26 +18,45 @@
       background-color: #e9f8f8;
     }
 
-    #intro {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background-color: #e9f8f8;
-      color: #004d4d;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-      text-align: center;
-      transition: opacity 0.5s ease;
-      padding: 20px;
-    }
+#intro {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0d1a26, #1e3a4c);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  text-align: center;
+  transition: opacity 0.5s ease;
+  padding: 20px;
+}
 
-    #intro img {
-      width: 160px;
-      margin-bottom: 24px;
-    }
+#intro img {
+  width: 180px;
+  margin-bottom: 24px;
+  animation: bounceIn 1s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
     #intro h1 {
       font-size: 2rem;
@@ -81,21 +100,22 @@
 
   <!-- Intro Splash -->
 <div id="intro">
-  <img src="Canva%20Education%20Stacked%20On%20Dark_id-ID.svg" alt="Canva for Education Logo" style="width: 180px; margin-bottom: 24px;">
+  <img src="Canva%20Education%20Stacked%20On%20Dark_id-ID.svg" alt="Canva for Education Logo">
   
-  <h1>Selamat Datang di Canva Power Class</h1>
+  <h1>Selamat Datang di <br> Canva Power Class</h1>
   
-  <p>
+  <p style="max-width: 600px;">
     Kegiatan ini diselenggarakan dalam rangka <strong>Pekan Raya Canva 2025</strong>,  
     bersama para pendidik hebat dari <strong>SD Negeri 2 Palapi, Kecamatan Muara Uya, Kabupaten Tabalong</strong>.
   </p>
   
-  <p style="font-style: italic; color: #007C88; margin-top: 1rem;">
+  <p style="font-style: italic; color: #00C4CC; margin-top: 1rem;">
     “Empowering the world to design”
   </p>
   
   <button id="startBtn">Mulai</button>
 </div>
+
 
 
   <!-- Canva Frame -->
