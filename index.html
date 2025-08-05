@@ -22,7 +22,10 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #0d1a26, #1e3a4c);
+  background: linear-gradient(-45deg, #1e3a4c, #2c5364, #3e4a5a, #1f2e35);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -33,6 +36,19 @@
   transition: opacity 0.5s ease;
   padding: 20px;
 }
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 #intro img {
   width: 180px;
@@ -102,15 +118,15 @@
 <div id="intro">
   <img src="Canva%20Education%20Stacked%20On%20Dark_id-ID.svg" alt="Canva for Education Logo">
   
-  <h1>Selamat Datang di <br> Canva Power Class</h1>
+  <h3>Selamat Datang di</h3><br><h1>Workshop Canva Power Class</h1>
   
   <p style="max-width: 600px;">
-    Kegiatan ini diselenggarakan dalam rangka <strong>Pekan Raya Canva 2025</strong>,  
-    bersama para pendidik hebat dari <strong>SD Negeri 2 Palapi, Kecamatan Muara Uya, Kabupaten Tabalong</strong>.
+    Kegiatan ini diselenggarakan dalam rangka<br><h2><strong>Pekan Raya Canva 2025</strong></h2><br>  
+    bersama para pendidik hebat di SD Negeri 2 Palapi, Kecamatan Muara Uya, Kabupaten Tabalong, Kalimantan Selatan.
   </p>
   
   <p style="font-style: italic; color: #00C4CC; margin-top: 1rem;">
-    “Empowering the world to design”
+    <strong>“Empowering the world to design”</strong>strong>
   </p>
   
   <button id="startBtn">Mulai</button>
